@@ -1,0 +1,81 @@
+
+.registerSection{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
+.registerSection h1{
+    text-align: center;
+    padding: 5px 5px;
+    margin-bottom: 10px;
+}
+
+.registerSection:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: url(../images/background_plant.jpg);
+    opacity: 0.25;
+}
+
+.formRegister{
+    border-radius: 7px;
+    margin: 120px auto 330px;
+    background-color: #fff;
+    z-index: 2;
+    box-shadow: 0px 0px 5px black;
+    padding: 10px 20px;
+    font-size: 15px;
+    position: relative;
+}
+
+.formRegister input{
+    margin: 5px 5px;
+    font-size: 15px;
+}
+
+
+table tr td{
+    padding: 5px 5px;
+}
+
+table tr:last-child td{
+    text-align: center;
+}
+
+.formRegister table inputInfo{
+    width: 250px;
+    height: 25px;
+}
+
+.registerBtn{
+    color: #fff;
+    background-color: #557153;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px !important;
+    width: 100%;
+    margin-top: 15px;
+    transition: background-color 300ms ease-in-out;
+}
+
+.registerBtn:hover{
+    background-color: #fff;
+    color: #557153;
+    border: 0.5px solid;
+}
+
+.error_text{
+    font-size: 15px;
+    position: absolute;
+    left: 90px;
+    top: 100%;
+    color: red;
+    font-weight: bold;
+}

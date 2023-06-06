@@ -1,0 +1,46 @@
+.orderSection{
+    min-height: 500px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items:center;
+}
+
+.orderSection:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: url(../images/background_plant.jpg);
+    opacity: 0.25;
+}
+
+.order{
+    display: table;
+    width: 80%;
+    border-collapse: collapse;
+    background-color: white;
+    z-index: 2;
+    margin: 20px auto;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.order td{
+    border: 1px solid black;
+    width: 10%;
+    padding: 15px 0px;
+}
+
+.order td a{
+    color: gray;
+}
+
+
+h3{
+    margin: 5px;
+}

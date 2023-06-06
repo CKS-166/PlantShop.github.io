@@ -1,0 +1,14 @@
+.productable{
+    margin: 30px auto;
+    border: 1px solid;
+    width: 80%;  
+    text-align: center;
+}
+
+.productable tr td{
+    /*border: 1px solid;*/
+}
+
+.productable a{
+    color: black;
+}

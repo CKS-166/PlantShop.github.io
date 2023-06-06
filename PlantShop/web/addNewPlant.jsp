@@ -1,0 +1,77 @@
+<%-- 
+    Document   : addNewPlant
+    Created on : Mar 17, 2023, 4:28:49 PM
+    Author     : ASUS
+--%>
+
+<%@page import="sample.dao.CategoryDAO"%>
+<%@page import="sample.dto.Category"%>
+<%@page import="sample.dao.PlantDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link rel="stylesheet" href="style/register.css" type="text/css"/>
+    </head>
+    <body>
+        <c:choose>
+            <c:when test="${sessionScope.admin == null}">
+                <c:set var="WARNING" value="You need to log in as Admin to view this page" scope="request"/>
+                <jsp:forward page="login.jsp"/>
+            </c:when>
+            <c:otherwise>
+                <header>
+                    <c:import url="header_loginedAdmin.jsp"/>
+                </header>
+                <section class="registerSection" style="min-height: 500px;">
+                <%
+                    ArrayList<Category> catelist = CategoryDAO.getCategories();
+                    ArrayList<String> imgList = PlantDAO.getImgPath();
+                    request.setAttribute("imgList", imgList);
+                    request.setAttribute("categoryList", catelist);
+                %>
+
+                <a href="mainController?action=managePlants" style="z-index: 2; background-color: black; color: white; width: 150px; padding: 10px; margin-top: 5px; margin-left: 5px;">Back to Manage Plant Page</a>
+                
+                <form action="mainController" method="post" class="formRegister">
+                    <h1>Add New Plant</h1>
+                    <table>
+                        <tr><th>Plant Name</th><td><input type="text" name="txtname" required="" placeholder="Input the name"/></td></tr>
+                        <tr><th>Price</th><td><input type="number" name="txtprice" required="" placeholder="Input price"/></td></tr>
+                        <tr>
+                            <th>Image</th>
+                            <td>
+                                <select name="imgpath">
+                                    <c:forEach var="image" items="${requestScope.imgList}">
+                                        <option value="${image}">${image}</option>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr><th>Description</th><td><input type="text" name="txtdes" required="" placeholder="Input description"/></td></tr>
+                        <tr>
+                            <th>Category</th>
+                            <td>
+                                <select name="cateid">
+                                    <c:forEach var="cate" items="${requestScope.categoryList}">
+                                        <option value="${cate.cateID}">${cate.cateName}</option>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="submit" name="action" value="addNewPlant"/>
+                </form>
+                <h3 style="color: red">${requestScope.error}</h3>
+                </section>
+                <footer>
+                    <c:import url="footer.jsp"/>
+                </footer>
+            </c:otherwise>
+        </c:choose>
+    </body>
+</html>
